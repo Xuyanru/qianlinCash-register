@@ -1,0 +1,488 @@
+body{
+	font:12px Arial,"\5b8b\4f53", sans-serif;
+}
+::-webkit-input-placeholder { /* WebKit browsers */  
+    color:#373737;  
+} 
+.w100{
+	font-size: 20px;
+	background: #fe7b02;
+	color:#ffffff;
+}
+/*欢迎语背景*/
+#loading,#wellcome{
+	background:url("../img/01-xin_02.png");
+}
+/*欢迎语颜色和字体*/
+#wellcome .wellcome-inner p{
+	color:#669933;
+	font-size: 25px;
+}
+/*登录背景*/
+#logIn{
+	background: url("../img/00-xin_02.jpg") no-repeat;
+	background-size: cover;
+}
+#main .login{
+	font-size: 18px;
+	font-family: "微软雅黑";
+}
+#username,#userpass{
+	font-family: arial;
+	font-size: 18px;
+}
+#username{
+	background: url("../img/00-xin-s_03.png")no-repeat right center;
+	background-size: cover;
+}
+#userpass{
+	background: url("../img/00-xin-s_06.png")no-repeat right center;
+	background-size: cover;
+}
+#logIn input[required]:focus + label[placeholder]:before {
+  color: #FF824F;
+}
+/*'记住密码'字体样式*/
+#main .login form  ul li:last-child span{
+	color: #ff8237;
+}
+/*登录按钮*/
+#main .login form  ul li:last-child a{
+	background: url("../img/00-xin-s_10.png");
+}
+#main .login form  ul li:last-child a:active{
+	background: url("../img/00-xin-s_10-07.png");
+}
+/*数字输入*/
+#main .enterbtns ul li{
+	background: url("../img/00-xin_09.png");
+	font-size: 32px;
+	color:#FFFFFF;
+}
+#main .enterbtns ul li:active{
+	background: url("../img/00-xin_09-09.png");
+}
+#main .enterbtns ul li.confirm,#main .enterbtns ul li.correct{
+	font-size: 24px;
+}
+#main .enterbtns ul li.correct span{
+	color: #ff2a00;
+}
+#main .enterbtns ul li.confirm span{
+	color: #7dff43;
+}
+/*用户名弹出框*/
+#logIn .unamedialog{
+	background: url("../img/01-xin_02.png");
+}
+#logIn .unamedialog ul.w940 li span{
+
+	border:1px solid #FF8C40;
+	color:#FF8C75;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 5px #FF8C40;
+	-webkit-box-shadow: 0px 0px 5px #FF8C40;
+}
+#logIn .unamedialog ul.w940 li span:active{
+	background: #eeeeee;
+}
+/*主页面内容*/
+#content,#bill{
+	background: url("../img/01-xin_02.png");
+}
+/*页头logo和菜单*/
+#header{
+	background: url("../img/head-bg15.png") no-repeat;
+	background-size:cover;
+}
+#header .top .nTime{
+	font-size: 1.3em;
+}
+#header .top .head-pt p{
+	font-size: 1.2em;
+	font-weight: 600;
+}
+#header .nav{
+	background: rgba(255,222,154,0.5);
+}
+#header .nav li{
+	font-size: 1.2em;
+}
+#header .nav li a{
+	font-weight: bold;
+	border:1px solid #F29343;
+	background:#FA9843;	
+	color: #FFFFFF;
+}
+#header .nav li.active a{
+	background: #E87117;
+}
+/*点餐主体内容*/
+/*左侧订单明细*/
+.dishOrder .orderList{
+	border-right:1px solid #F7D6C6;
+}
+.ordertitle{
+	background:#FAAF74;
+}
+.dishOrder ul.mingxi li.tangs p{
+	background: url("../img/01-xin-s_52-14.png") no-repeat;
+	background-size: 100% 100%;
+}
+.dishOrder ul.mingxi li.active.tangs p{
+	margin-left:0px;
+	background: url("../img/01-xin-s_52-15.png") no-repeat;
+	background-size: 100% 100%;
+}
+.dishOrder ul.mingxi li.waid p{
+	margin-left: 0px;
+	background: url("../img/01-xin-s_52-16.png") no-repeat;
+	background-size: 100% 100%;
+}
+.dishOrder ul.mingxi li.active.waid p{
+	background: url("../img/01-xin-s_52.png") no-repeat;
+	background-size: 100% 100%;
+}
+.dishOrder .ordercontent{
+	font-size: 12px;
+}
+.dishOrder .lists{
+	border-bottom: 1px dashed #666;
+}
+.dishOrder .lists .bz .bzlist{
+	color:#646464;
+}
+.dishOrder .lists .bz p span{
+	background: #FC4501;
+	color:#FFFFFF;
+
+}
+.dishOrder .orderfooter{
+	font-size: 1.5em;
+}
+.dishOrder .orderfooter span{
+	color:red;
+}
+/*右侧点餐列表*/
+.dishlist .menu{
+	font-size: 1.2em;
+}
+.dishlist .menu li{
+	background: #FA9843;
+	color: #fff;
+}
+.dishlist .menu li.active{
+	background: #E87117;
+	color: #fff;
+}
+.dishlist .contain .dishouter{
+	border:1px solid #F7D6C6;
+}
+.dishlist .contain .dishouter .top,.dishlist .contain .dishouter .bottom{
+	background: rgba(255,255,255,0.3);
+}
+.dishlist .contain .dishouter .dishinner li p.foodname{
+	background:#FAC9B1;
+}
+.dishlist .contain .dishouter .dishinner li p.foodprice{
+	background:#c3c3c3;
+}
+.dishlist .contain .dishouter .dishinner li p.selectIcon{
+	background: url("../img/01-xin-s_31.png");
+}
+.dishlist .footbtns li{
+	background: #ED6708;
+	background-size: cover;
+	color: #fff;
+	border: 1px solid #D35A08;
+}
+.dishlist .footbtns li img{
+	margin-bottom: 3px;
+	margin-right: 5px;
+}
+.dishlist .footbtns li.jzbtn{
+	background: #E87117
+}
+/*结算*/
+#bill .billtitle{
+	background:#F5811A;
+	font-size: 2em;
+	font-weight: bold;
+}
+#bill .billcontent .billLeft .enter-price{
+	font-size: 1.8em;
+}
+#bill .billcontent .billLeft .enter-price .keyboard .jeinput input{
+	border:1px solid #373737;
+}
+#bill .billcontent .billLeft .enter-price .keyboard .jeinput input,#bill .billcontent .billLeft .enter-price .keyboard .jeinput select{
+	font-size: 0.8em;
+}
+ul.enterKey{
+	background: url("../img/enterkey-bg.png") no-repeat;
+	background-size:cover ;
+	box-shadow: 1px 1px 10px 1px #000000;
+}
+ul.enterKey li{
+	font-family: "Georgia";
+	font-weight: bold;
+	font-size: 1.3em;
+	color:#217239;
+    background: rgba(172,169,155,0.3);
+}
+ul.enterKey li:active{
+   background: rgba(86,103,110,0.3);	
+}
+ul.enterKey li:last-child{
+	font-size: 1em;
+}
+#bill .billcontent .billLeft .enter-price .shortcut .shortcutbtn li{
+	background: linear-gradient(to bottom,#E5E586,#C9C962);
+	border:1px solid #C9C962;
+	box-shadow: 5px 5px 10px #898940;
+}
+#bill .billcontent .billLeft .enter-price .shortcut .shortcutbtn li:active{
+	background: linear-gradient(to bottom,#C9C96F,#AAAA52);
+}
+#bill .billcontent .billLeft .billWay{
+	font-size: 1.4em;
+	font-weight: bold;
+}
+#bill .billcontent .billLeft .billWay .billwaybtn li{
+	color: #FFFFFF;
+	background: linear-gradient(to bottom,#FABA6B,#FCA34E);
+	border:1px solid #E5B45F;
+	box-shadow: 5px 5px 10px #AA6F34;
+}
+#bill .billcontent .billLeft .billWay .billwaybtn li:active{
+	background: linear-gradient(to bottom,#F5AD5A,#CE893E);
+}
+#bill .billcontent .billLeft .billWay .fapiao{
+	background: linear-gradient(to bottom,#F78B90,#F76A71);
+	border:1px solid #C96276;
+	box-shadow: 5px 5px 10px #C96276;
+	color:#FFFFFF;
+}
+#bill .billcontent .billRight{
+	border:2px solid #DB813B;
+	font-size: 1.8em;
+}
+#bill .billcontent .billRight .subtotle .subtotle-title{
+	background: #FAB868;
+}
+#bill .billcontent .billLeft .billWay .billwayTitle span{
+	background:url("../img/billway-title.png") no-repeat;
+	background-size:100% 100%;
+}
+#bill .billcontent .billLeft .billWay .billwayTitle p{
+	border-bottom: 5px dotted #FAB868;
+}
+#bill .billcontent .billRight .subtotle .subconfirm li{
+	background:linear-gradient(to bottom,#D1F29B,#A2C964);
+	border:1px solid #8EAF58;
+}
+#bill .billcontent .billRight .subtotle .subconfirm li.subcancel-btn{
+	background:linear-gradient(to bottom,#F58383,#E34B4B);
+	border:1px solid #C64646;
+}
+/*订单列表*/
+#order-list .dishOrder .orderList .mingxi li a{
+	font-size: 1.2em;
+	background:#E87117;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#order-list .lists.active{
+	background: #DBD9D9;
+}
+#order-list .dishlist .searchinput input,#order-list .dishlist .searchinput li select{
+	background: rgba(255,255,255,0.5);
+}
+#order-list .dishlist .searchinput li.searchbtn img{
+	border:1px solid #646464;
+	background: #DDDDDD;
+}
+#order-list .dishlist .searchinput li.searchbtn:active img{
+	background: #999999;
+}
+#order-list .dishlist .searchinput li.clearinput a{
+	background: #FA9843;
+	color:#FFFFFF;
+}
+#order-list .dishlist .searchinput li.clearinput:active a{
+	background: #E87117;
+}
+#order-list .dishlist .checkOutbtns li,#netmeal .dishlist .checkOutbtns li{
+	background:#FA9843;
+	color:#FFFFFF;
+}
+#order-list .dishlist .checkOutbtns li:active,#netmeal .dishlist .checkOutbtns li:active{
+	background:#E87117;
+}
+#order-list .dishlist .checkOut-con,#netmeal .dishlist .checkOut-con{
+	background:#FAAF74;
+}
+#order-list .dishlist .checkOut-con li,#netmeal .dishlist .checkOut-con li{
+	font-size: 1.1em;
+	
+}
+#order-list .dishlist .checkOut-lists .checkOut-list,#netmeal .dishlist .checkOut-lists .checkOut-list{
+	background:#EAEAEA;
+	border-bottom: 1px solid #CCCCCC;
+}
+#order-list .dishlist .checkOut-lists .checkOut-list.active,#netmeal .dishlist .checkOut-lists .checkOut-list.active{
+	background:#FAD8C6;
+}
+#order-list .dishlist .checkOutpage,#netmeal .dishlist .checkOutpage,#jiaobanliushui .checkOutpage{
+	background: rgba(151,151,151,0.3);
+	font-size: 1.2em;
+}
+#order-list .dishlist .checkOutpage li,#netmeal .dishlist .checkOutpage li,#jiaobanliushui .checkOutpage li{
+	background: url("../img/page-bg1.png");
+	background-size:100% 100% ;
+} 
+#order-list .dishlist .checkOutpage li.page-num.active,#netmeal .dishlist .checkOutpage li.page-num.active,#jiaobanliushui .checkOutpage li.page-num.active{
+	background: #FA9843;
+	color:#FFFFFF;
+}
+#order-list .dishlist .checkOutpage li.circle,#netmeal .dishlist .checkOutpage li.circle,#jiaobanliushui .checkOutpage li.circle{
+	background: url("../img/page-bg.png");
+}
+#order-list .dishlist .checkOutpage li:last-child img,#netmeal .dishlist .checkOutpage li:last-child img,#jiaobanliushui .checkOutpage li:last-child img{
+	background: url("../img/page-bg1.png") no-repeat;
+	background-size:100% 100% ;
+}
+/*反结算   购物车菜单数量弹出框*/
+#order .dishCount-outer p.tishi{
+	border:1px solid #FF0000;
+	background: #FFFFFF;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#order-list .fanjiesuan-outer,#order .dishCount-outer{
+	background: #646464;
+}
+#order-list .fanjiesuan-outer input,#order .dishCount-outer input{
+	border:1px solid #FAAE74;
+	box-shadow: 0 0 5px #FAAE74;
+}
+#order-list .fanjiesuan-outer button,#order .dishCount-outer button{
+	font-size: 1.3em;
+	color:#FFFFFF;
+}
+#order-list .fanjiesuan-outer button:first-child{
+	background: #7CC690;
+}
+#order .dishCount-outer button:first-child{
+	background: #7CC690;
+}
+#order-list .fanjiesuan-outer button:last-child{
+	background: #FAAE74;
+}
+#order .dishCount-outer button:last-child{
+	background: #FAAE74;
+}
+#order-list .fanjiesuan-outer .enterKey,#order .dishCount-outer .enterKey{
+	font-size: 2em;
+}
+/*网络取餐*/
+#netmeal .dishlist .checkOutbtns li.active{
+	background: #E87117;
+}
+#netmeal .handle button{
+	background:#E87117;
+	color:#FFFFFF;
+	font-size: 1.2em;
+}
+#netmeal .handle button:active{
+	background:#CE6215;
+}
+/*交班*/
+#jiaobanMain{
+	font-size: 1.8em;
+}
+#jiaobanMain h2{
+	font-size: 1em;
+	background: salmon;
+	color:#FFFFFF;
+}
+#jiaobanMain .jbLeft{
+	border-right: 1px solid sandybrown;
+}
+#jiaobanMain .jbmsg-title{
+	background: #F7AA67;
+}
+#jiaobanMain .billwayTitle{ 
+	font-size: 16px;
+	font-weight: bold;
+	color:#FFFFFF;
+}
+#jiaobanMain .billwayTitle span{
+	background:url("../img/billway-title.png") no-repeat;
+	background-size:100% 100%;
+}
+#jiaobanMain .billwayTitle p{
+	border-bottom: 5px dotted #FAB868;
+}
+#jiaobanMain .jbLeft .jbmsg li input{
+	font-size: 0.8em;
+	border:1px solid #646464;
+}
+#jiaobanMain .jbRight .jbbtns li button{
+	color:#FFFFFF;
+	background:#FABF46;
+	font-size: 16px;
+}
+#jiaobanMain .jbRight .jbbtns li.caozuo button{
+	background:#FA9843;
+}
+#jiaobanMain .jbRight ul.enterKey li:last-child{
+	font-size: 1.1em;
+}
+/*交班记录查询*/
+#jiaobanRecord .jbR-top .jiaoban-search{
+	border:1px solid #F5AE70;
+	background: #FFFFFF;
+	
+}
+#jiaobanRecord .jbR-top .jiaoban-dayin{
+	background: #FA9843;
+	font-size: 1.3em;
+	color:#FFFFFF;
+}
+#jiaobanRecord .jbR-con .jbR-con-title{
+	font-size: 1.1em;
+	font-weight: bold;
+	color:#FFFFFF;
+	background:linear-gradient(to bottom,#FCC198,#F2A56C);
+}
+#jiaobanRecord .jbR-con-lists{
+	background: #E8E8E8;
+}
+#jiaobanRecord .jbR-con-list li{
+	border-bottom:1px solid #CCCCCC;
+}
+#jiaobanRecord .jbR-foot-cancel button{
+	background: #E87117;
+	color:#FFFFFF;
+	font-size: 1.2em;
+}
+/*流水*/
+#jiaobanliushui .jbR-con .jbR-con-title{
+	font-size: 1.1em;
+	font-weight: bold;
+	color:#FFFFFF;
+	background:linear-gradient(to bottom,#FCC198,#F2A56C);
+}
+#jiaobanliushui .jbR-con .jbR-con-list li{
+	border-bottom: 1px solid #CCCCCC;
+}
+#jiaobanliushui .jbR-con-lists{
+	background: #E8E8E8;
+}
+#jiaobanliushui .jbR-foot-cancel button{
+	background: #E87117;
+	color:#FFFFFF;
+	font-size: 1.2em;
+}
