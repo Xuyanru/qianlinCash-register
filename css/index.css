@@ -69,13 +69,9 @@ img{
 	width:100%;
 	height:100%;
 }
-#main>div{
-	display: none;
+#main{
 	width: 100%;
 	height: 100%;
-}
-#main>div.active{
-	display: block;
 }
 #loading,#wellcome{
 	position:absolute;
@@ -85,6 +81,7 @@ img{
 	height:100%;
 /*	background:url("../img/01-xin_02.png");*/
 	z-index: 1000;
+	display: none;
 }
 #loading img,#wellcome .wellcome-inner{
 	position: absolute;
@@ -261,10 +258,18 @@ img{
 /*	background: #eeeeee;*/
 }
 /*主页面内容*/
-#content,#bill{
-	width: 100%;
+#content-outer{
+	width: 3072px;
 	height: 100%;
+	position: relative;
+	left:0;
 /*	background: url("../img/01-xin_02.png");*/
+}
+#content-outer>div{
+	width:1024px;
+	float: left;
+	height:100%;
+	overflow: hidden;
 }
 /*页头logo和菜单*/
 #header{
@@ -352,11 +357,16 @@ img{
 /*	background: #E87117;*/
 }
 /*主体内容*/
-#main .maincontent>div{
-	display: none;
+#main .maincontent{
+	position: relative;
+	width:5120px;
+	overflow: hidden;
+	left: 0;
 }
-#main .maincontent>div.active{
-	display: block;
+#main .maincontent>div{
+	float: left;
+	overflow: hidden;
+	width:1024px;
 }
 /*点餐主体内容*/
 .dishOrder,.dishlist{
@@ -620,17 +630,17 @@ img{
 }
 
 /*备注弹出框*/
-#order .bzdialog{
+#order-page1 .bzdialog{
 	width: 100%;
 	height: 100%;
-	position:absolute;
+	position:fixed;
 	top:0;
 	left: 0;
 	background: rgba(0,0,0,0.8);
 	display: none;
 	z-index: 10;
 }
-#order  .bzdialoginner{
+#order-page1  .bzdialoginner{
 	position: absolute;
 	top:50%;
 	left: 50%;
@@ -642,7 +652,7 @@ img{
 	color:#646464;
 	border:2px solid #FF0000;
 }
-#order  .bzdialoginner .bzbtn li{
+#order-page1  .bzdialoginner .bzbtn li{
 	width:100px;
 	height:35px;
 	line-height: 30px;
@@ -651,33 +661,37 @@ img{
 	-webkit-border-radius: 5px;
 	cursor: pointer;
 }
-#order  .bzdialoginner .bzbtn li:active{
+#order-page1  .bzdialoginner .bzbtn li:active{
 	background: #CCCCCC;
 }
-#order  .bzdialoginner .bzbtn{
+#order-page1  .bzdialoginner .bzbtn{
 	padding-bottom:20px;
 	padding-right: 20px;
 	overflow: hidden;
 }
-#order  .bzdialoginner .bzbtn li.bzconfirm{
+#order-page1  .bzdialoginner .bzbtn li.bzconfirm{
 	border:2px solid #4BA339;
 	color:#4BA339;
 }
-#order  .bzdialoginner .bzbtn li.btcancel{
+#order-page1  .bzdialoginner .bzbtn li.btcancel{
 	border:2px solid #FF8C40;
 	color: #FF8C40;
 }
-#order  .bzdialoginner form ul{
-	width:400px;
-	padding:20px;
+#order-page1  .bzdialoginner form ul{
+	width:600px;
+	padding:0px 30px 20px;
 	overflow: hidden;
 }
-#order  .bzdialoginner form ul li{
+#order-page1  .bzdialoginner div.jikou{
+	padding:10px 20px;
+	font-weight: bold;
+}
+#order-page1  .bzdialoginner form ul li{
 	width:100%;
 	overflow: hidden;
 	margin:10px;
 }
-#order  .bzdialoginner form ul li label{
+#order-page1  .bzdialoginner form ul li label{
 	width:120px;
 }
 /*结算*/
@@ -865,7 +879,7 @@ ul.enterKey li:last-child{
 	/*border:1px solid #C64646;*/
 }
 /*订单列表*/
-#order-list .dishOrder .orderList .mingxi li a{
+#order-page3 .dishOrder .orderList .mingxi li a{
 	display: inline-block;
 	width:100px;
 	height:40px;
@@ -879,34 +893,34 @@ ul.enterKey li:last-child{
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-#order-list .lists.active{
+#order-page3 .lists.active{
 	/*background: #DBD9D9;*/
 }
-#order-list .dishOrder .orderList .mingxi li img{
+#order-page3 .dishOrder .orderList .mingxi li img{
 	width:70px;
 }
-#order-list .dishOrder .ordercontent ul.ordertitle{
+#order-page3 .dishOrder .ordercontent ul.ordertitle{
 	padding:0;
 }
-#order-list .dishOrder .ordercontent ul.ordertitle li.list-number,#order-list .dishOrder .ordercontent ul.lists-item li.list-number,#netmeal .dishOrder .ordercontent ul.ordertitle li.list-number,#netmeal .dishOrder .ordercontent ul.lists-item li.list-number{
+#order-page3 .dishOrder .ordercontent ul.ordertitle li.list-number,#order-page3 .dishOrder .ordercontent ul.lists-item li.list-number,#order-page2 .dishOrder .ordercontent ul.ordertitle li.list-number,#order-page2 .dishOrder .ordercontent ul.lists-item li.list-number{
 	width:60px;
 }
-#order-list .dishOrder .ordercontent ul.ordertitle li.dishname,#order-list .dishOrder .ordercontent ul.lists-item li.dishname,#netmeal .dishOrder .ordercontent ul.ordertitle li.dishname,#netmeal .dishOrder .ordercontent ul.lists-item li.dishname{
+#order-page3 .dishOrder .ordercontent ul.ordertitle li.dishname,#order-page3 .dishOrder .ordercontent ul.lists-item li.dishname,#order-page2 .dishOrder .ordercontent ul.ordertitle li.dishname,#order-page2 .dishOrder .ordercontent ul.lists-item li.dishname{
 	width:118px;
 }
-#order-list .dishOrder .ordercontent ul.ordertitle li.price,#order-list .dishOrder .ordercontent ul.lists-item li.price,#netmeal .dishOrder .ordercontent ul.ordertitle li.price,#netmeal .dishOrder .ordercontent ul.lists-item li.price{
+#order-page3 .dishOrder .ordercontent ul.ordertitle li.price,#order-page3 .dishOrder .ordercontent ul.lists-item li.price,#order-page2 .dishOrder .ordercontent ul.ordertitle li.price,#order-page2 .dishOrder .ordercontent ul.lists-item li.price{
 	width:60px;
 }
-#order-list .dishOrder .ordercontent ul.ordertitle li.count,#order-list .dishOrder .ordercontent ul.lists-item li.count,#netmeal .dishOrder .ordercontent ul.ordertitle li.count,#netmeal .dishOrder .ordercontent ul.lists-item li.count{
+#order-page3 .dishOrder .ordercontent ul.ordertitle li.count,#order-page3 .dishOrder .ordercontent ul.lists-item li.count,#order-page2 .dishOrder .ordercontent ul.ordertitle li.count,#order-page2 .dishOrder .ordercontent ul.lists-item li.count{
 	width:60px;
 }
-#order-list .dishOrder .orderList .orderlists{
+#order-page3 .dishOrder .orderList .orderlists{
 	height:426px;
 }
-#order-list .dishlist .searchinput ul li{
+#order-page3 .dishlist .searchinput ul li{
 	margin:5px 10px;
 }
-#order-list .dishlist .searchinput input,#order-list .dishlist .searchinput li select{
+#order-page3 .dishlist .searchinput input,#order-page3 .dishlist .searchinput li select{
 	width:130px;
 	height:30px;
 	line-height: 30px;
@@ -915,20 +929,20 @@ ul.enterKey li:last-child{
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-#order-list .dishlist .searchinput li select{
+#order-page3 .dishlist .searchinput li select{
 	width:100px;
 }
-#order-list .dishlist .searchinput li.searchbtn img{
+#order-page3 .dishlist .searchinput li.searchbtn img{
 	width:30px;
 	/*border:1px solid #646464;*/
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	/*background: #DDDDDD;*/
 }
-#order-list .dishlist .searchinput li.searchbtn:active img{
+#order-page3 .dishlist .searchinput li.searchbtn:active img{
 	/*background: #999999;*/
 }
-#order-list .dishlist .searchinput li.clearinput a{
+#order-page3 .dishlist .searchinput li.clearinput a{
 	display: inline-block;
 	width:70px;
 	height:30px;
@@ -939,14 +953,14 @@ ul.enterKey li:last-child{
 	-webkit-border-radius: 5px;
 	/*color:#FFFFFF;*/
 }
-#order-list .dishlist .searchinput li.clearinput:active a{
+#order-page3 .dishlist .searchinput li.clearinput:active a{
 	/*background: #8EB258;*/
 }
-#order-list .dishlist .checkOutbtns,#netmeal .dishlist .checkOutbtns{
+#order-page3 .dishlist .checkOutbtns,#order-page2 .dishlist .checkOutbtns{
 	width:360px;
 	margin:0 auto;
 }
-#order-list .dishlist .checkOutbtns li,#netmeal .dishlist .checkOutbtns li{
+#order-page3 .dishlist .checkOutbtns li,#order-page2 .dishlist .checkOutbtns li{
 	width:100px;
 	line-height:35px;
 	margin:5px 10px 10px;
@@ -954,53 +968,53 @@ ul.enterKey li:last-child{
 	/*color:#FFFFFF;*/
 	border-radius: 5px;
 }
-#order-list .dishlist .checkOutbtns li:active,,#netmeal .dishlist .checkOutbtns li:active{
+#order-page3 .dishlist .checkOutbtns li:active,,#order-page2 .dishlist .checkOutbtns li:active{
 	/*background: linear-gradient(to bottom,#F2AA55,#F09B39);*/
 }
-#order-list .dishlist .checkOut-con,#netmeal .dishlist .checkOut-con{
+#order-page3 .dishlist .checkOut-con,#order-page2 .dishlist .checkOut-con{
 	/*background:linear-gradient(to bottom,#FCC198,#F2A56C);*/
 }
-#order-list .dishlist .checkOut-con li,#order-list .dishlist .checkOut-list li,#netmeal .dishlist .checkOut-con li,#netmeal .dishlist .checkOut-list li{
+#order-page3 .dishlist .checkOut-con li,#order-page3 .dishlist .checkOut-list li,#order-page2 .dishlist .checkOut-con li,#order-page2 .dishlist .checkOut-list li{
 	width:10%;
 	height:31px;
 	line-height: 31px;
 	text-align: center;
 }
-#order-list .dishlist .checkOut-con li,#netmeal .dishlist .checkOut-con li{
+#order-page3 .dishlist .checkOut-con li,#order-page2 .dishlist .checkOut-con li{
 	height:35px;
 	line-height: 35px;
 	/*font-size: 1.1em;*/
 	
 }
-#order-list .dishlist .checkOut-lists{
+#order-page3 .dishlist .checkOut-lists{
 	height:469px;
 }
-#order-list .dishlist .checkOut-con li.long,#order-list .dishlist .checkOut-list li.long{
+#order-page3 .dishlist .checkOut-con li.long,#order-page3 .dishlist .checkOut-list li.long{
 	width:17%;
 }
-#order-list .dishlist .checkOut-con li.short,#order-list .dishlist .checkOut-list li.short{
+#order-page3 .dishlist .checkOut-con li.short,#order-page3 .dishlist .checkOut-list li.short{
 	width:9%;
 }
-#order-list .dishlist .checkOut-lists .checkOut-list:nth-child(odd),#netmeal .dishlist .checkOut-lists .checkOut-list.yichuli{
+#order-page3 .dishlist .checkOut-lists .checkOut-list:nth-child(odd),#order-page2 .dishlist .checkOut-lists .checkOut-list.yichuli{
 	/*background:linear-gradient(to bottom,#F7E5DE,#FADBCB);*/
 }
-#order-list .dishlist .checkOut-lists .checkOut-list:nth-child(even),#netmeal .dishlist .checkOut-lists .checkOut-list.weichuli{
+#order-page3 .dishlist .checkOut-lists .checkOut-list:nth-child(even),#order-page2 .dishlist .checkOut-lists .checkOut-list.weichuli{
 	/*background:linear-gradient(to bottom,#E3E3E3,#D6D3D3);*/
 }
-#order-list .dishlist .checkOut-lists .checkOut-list.active,#netmeal .dishlist .checkOut-lists .checkOut-list.active{
+#order-page3 .dishlist .checkOut-lists .checkOut-list.active,#order-page2 .dishlist .checkOut-lists .checkOut-list.active{
 	/*color:#FFFFFF;*/
 	/*background:linear-gradient(to bottom,#F09858,#F28B3E);*/
 }
-#order-list .dishlist .checkOutpage,#netmeal .dishlist .checkOutpage,#jiaobanliushui .checkOutpage{
+#order-page3 .dishlist .checkOutpage,#order-page2 .dishlist .checkOutpage,#jiaobanliushui .checkOutpage{
 	/*background: rgba(151,151,151,0.3);*/
 	width:100%;
 	padding:5px 0;
 	/*font-size: 1.2em;*/
 }
-#order-list .dishlist .checkOutpage li:first-child,#netmeal .dishlist .checkOutpage li:first-child,#jiaobanliushui .checkOutpage li:first-child{
+#order-page3 .dishlist .checkOutpage li:first-child,#order-page2 .dishlist .checkOutpage li:first-child,#jiaobanliushui .checkOutpage li:first-child{
 	margin-left: 130px;
 }
-#order-list .dishlist .checkOutpage li,#netmeal .dishlist .checkOutpage li,#jiaobanliushui .checkOutpage li{
+#order-page3 .dishlist .checkOutpage li,#order-page2 .dishlist .checkOutpage li,#jiaobanliushui .checkOutpage li{
 	/*background: url("../img/page-bg1.png");*/
 	background-size:100% 100% ;
 	margin:2px;
@@ -1008,28 +1022,28 @@ ul.enterKey li:last-child{
 	line-height: 35px;
 	width:80px;
 } 
-#order-list .dishlist .checkOutpage li.page-num.active,#netmeal .dishlist .checkOutpage li.page-num.active,#jiaobanliushui .checkOutpage li.page-num.active{
+#order-page3 .dishlist .checkOutpage li.page-num.active,#order-page2 .dishlist .checkOutpage li.page-num.active,#jiaobanliushui .checkOutpage li.page-num.active{
 	/*background: #FA9843;*/
 	/*color:#FFFFFF;*/
 }
-#order-list .dishlist .checkOutpage li span,#netmeal .dishlist .checkOutpage li span,#jiaobanliushui .checkOutpage li span{
+#order-page3 .dishlist .checkOutpage li span,#order-page2 .dishlist .checkOutpage li span,#jiaobanliushui .checkOutpage li span{
 	margin:0 5px;
 }
-#order-list .dishlist .checkOutpage li.circle,#netmeal .dishlist .checkOutpage li.circle,#jiaobanliushui .checkOutpage li.circle{
+#order-page3 .dishlist .checkOutpage li.circle,#order-page2 .dishlist .checkOutpage li.circle,#jiaobanliushui .checkOutpage li.circle{
 	/*background: url("../img/page-bg.png");*/
 	width:35px;
 	border-radius: 50%;
 }
-#order-list .dishlist .checkOutpage li:last-child,#netmeal .dishlist .checkOutpage li:last-child,#jiaobanliushui .checkOutpage li:last-child{
+#order-page3 .dishlist .checkOutpage li:last-child,#order-page2 .dishlist .checkOutpage li:last-child,#jiaobanliushui .checkOutpage li:last-child{
 	background: none;
 	width:110px;
 }
-#order-list .dishlist .checkOutpage li input,#netmeal .dishlist .checkOutpage li input,#jiaobanliushui .checkOutpage li input{
+#order-page3 .dishlist .checkOutpage li input,#order-page2 .dishlist .checkOutpage li input,#jiaobanliushui .checkOutpage li input{
 	width: 50px;
 	height:30px;
 	line-height: 30px;	
 }
-#order-list .dishlist .checkOutpage li:last-child img,#netmeal .dishlist .checkOutpage li:last-child img,#jiaobanliushui .checkOutpage li:last-child img{
+#order-page3 .dishlist .checkOutpage li:last-child img,#order-page2 .dishlist .checkOutpage li:last-child img,#jiaobanliushui .checkOutpage li:last-child img{
 	padding:7px 7px 7px 9px;
 	border-radius: 5px;
 	/*background: url("../img/page-bg1.png") no-repeat;*/
@@ -1037,7 +1051,7 @@ ul.enterKey li:last-child{
 	margin:0 5px;
 }
 /*反结算  点餐输入数量*/
-#order .dishCount-outer p.tishi{
+#order-page1 .dishCount-outer p.tishi{
 	position: absolute;
 	top:5px;
 	left:5px;
@@ -1047,12 +1061,25 @@ ul.enterKey li:last-child{
 	line-height: 35px;
 	padding-left: 20px;
 }
-#order .dishCount-outer .dishCount-count{
+#order-page1 .dishCount-outer .dishCount-count{
 	margin-top:20px;
 }
-#order-list .fanjiesuan-outer,#order .dishCount-outer{
+#order-page3 .fanjiesuan-outer>p{
+	width:100%;
+	height:100%;
+	font-size: 14px;
+	font-weight: bold;
+	color:#7CC690;
+	height:20px;
+	line-height: 20px;
+	margin:0;
+}
+#order-page3 .fanjiesuan-outer>p.warning{
+	color:#FAAE74;
+}
+#order-page3 .fanjiesuan-outer,#order-page1 .dishCount-outer{
 	display: none;
-	position:absolute;
+	position:fixed;
 	top:50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
@@ -1060,10 +1087,10 @@ ul.enterKey li:last-child{
 	padding:20px;
 	border-radius: 10px;
 }
-#order-list .fanjiesuan-outer>div.fanjiesuan-price{
+#order-page3 .fanjiesuan-outer>div.fanjiesuan-price{
 	display: none;
 }
-#order-list .fanjiesuan-outer input,#order .dishCount-outer input{
+#order-page3 .fanjiesuan-outer input,#order-page1 .dishCount-outer input{
 	width:170px;
 	margin: 10px 0 10px 51px;
 	border-radius: 5px;
@@ -1072,10 +1099,10 @@ ul.enterKey li:last-child{
 	height:35px;
 	line-height: 35px;
 }
-#order-list .fanjiesuan-outer p,#order .dishCount-outer p{
+#order-page3 .fanjiesuan-outer form p,#order-page1 .dishCount-outer p{
 	margin-left: 51px;
 }
-#order-list .fanjiesuan-outer button,#order .dishCount-outer button{
+#order-page3 .fanjiesuan-outer button,#order-page1 .dishCount-outer button{
 	width:75px;
 	height:35px;
 	line-height: 35px;
@@ -1084,46 +1111,46 @@ ul.enterKey li:last-child{
 	margin:10px 5px;
 	/*color:#FFFFFF;*/
 }
-#order-list .fanjiesuan-outer button:first-child{
+#order-page3 .fanjiesuan-outer button:first-child{
 	/*background: #7CC690;*/
 }
-#order .dishCount-outer button:first-child{
+#order-page1 .dishCount-outer button:first-child{
 	/*background: #7CC690;*/
 }
-#order-list .fanjiesuan-outer button:last-child{
+#order-page3 .fanjiesuan-outer button:last-child{
 	/*background: #FAAE74;*/
 }
-#order .dishCount-outer button:last-child{
+#order-page1 .dishCount-outer button:last-child{
 	/*background: #FAAE74;*/
 }
-#order-list .fanjiesuan-outer .enterKey,#order .dishCount-outer .enterKey{
+#order-page3 .fanjiesuan-outer .enterKey,#order-page1 .dishCount-outer .enterKey{
 	/*font-size: 2em;*/
 }
 /*网络取餐*/
-#netmeal .mingxi li{
+#order-page2 .mingxi li{
 	line-height: 25px;
 	padding-left: 20px;
 }
-#netmeal .dishOrder .orderList .orderlists{
+#order-page2 .dishOrder .orderList .orderlists{
 	height:423px;
 }
-#netmeal .dishlist .checkOut-lists{
+#order-page2 .dishlist .checkOut-lists{
 	height:420px;
 }
-#netmeal .dishlist .checkOut-con li.long,#netmeal .dishlist .checkOut-list li.long{
+#order-page2 .dishlist .checkOut-con li.long,#order-page2 .dishlist .checkOut-list li.long{
 	width:20%;
 }
-#netmeal .dishlist .checkOutbtns li.active{
+#order-page2 .dishlist .checkOutbtns li.active{
 	/*background: #E87117;*/
 }
-#netmeal .dishOrder .ordercontent ul.ordertitle{
+#order-page2 .dishOrder .ordercontent ul.ordertitle{
 	padding-left:0px;
 }
-#netmeal .dishlist .checkOut-con li,#netmeal .dishlist .checkOut-list li{
+#order-page2 .dishlist .checkOut-con li,#order-page2 .dishlist .checkOut-list li{
 	height:41px;
 	line-height: 41px;
 }
-#netmeal .handle button{
+#order-page2 .handle button{
 	width:100px;
 	height:40px;
 	line-height: 40px;
@@ -1133,17 +1160,17 @@ ul.enterKey li:last-child{
 	/*color:#FFFFFF;*/
 	/*font-size: 1.2em;*/
 }
-#netmeal .handle button:active{
+#order-page2 .handle button:active{
 	/*background:#CE6215;*/
 }
 /*交班*/
-#jiaoban{
+#order-page4{
 	height:643px;
 }
-#jiaoban>div{
+#order-page4>div{
 	display: none;
 }
-#jiaoban>div.active{
+#order-page4>div.active{
 	display: block;
 }
 #jiaobanMain{

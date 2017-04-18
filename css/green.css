@@ -285,117 +285,118 @@ ul.enterKey li:last-child{
 	border:1px solid #C64646;
 }
 /*订单列表*/
-#order-list .dishOrder .orderList .mingxi li a{
+#order-page3 .dishOrder .orderList .mingxi li a{
 	font-size: 1.2em;
 	background:#09694E;
 	color: #FFFFFF;
 	font-weight: bold;
 }
-#order-list .lists.active{
-	background: #DBD9D9;
+#order-page3 .lists.active{
+	color:#FFFFFF;
+	background: #95D3C1;
 }
-#order-list .dishlist .searchinput input,#order-list .dishlist .searchinput li select{
+#order-page3 .dishlist .searchinput input,#order-page3 .dishlist .searchinput li select{
 	background: rgba(255,255,255,0.5);
 }
-#order-list .dishlist .searchinput li.searchbtn img{
+#order-page3 .dishlist .searchinput li.searchbtn img{
 	border:1px solid #646464;
 	background: #DDDDDD;
 }
-#order-list .dishlist .searchinput li.searchbtn:active img{
+#order-page3 .dishlist .searchinput li.searchbtn:active img{
 	background: #999999;
 }
-#order-list .dishlist .searchinput li.clearinput a{
-	background: #A2C964;
-	color:#FFFFFF;
-}
-#order-list .dishlist .searchinput li.clearinput:active a{
-	background: #8EB258;
-}
-#order-list .dishlist .checkOutbtns li,#netmeal .dishlist .checkOutbtns li{
+#order-page3 .dishlist .searchinput li.clearinput a{
 	background: #00BE88;
 	color:#FFFFFF;
 }
-#order-list .dishlist .checkOutbtns li:active,#netmeal .dishlist .checkOutbtns li:active{
+#order-page3 .dishlist .searchinput li.clearinput:active a{
+	background: #8EB258;
+}
+#order-page3 .dishlist .checkOutbtns li,#order-page2 .dishlist .checkOutbtns li{
+	background: #00BE88;
+	color:#FFFFFF;
+}
+#order-page3 .dishlist .checkOutbtns li:active,#order-page2 .dishlist .checkOutbtns li:active{
 	background:#09694E;
 }
-#order-list .dishlist .checkOut-con,#netmeal .dishlist .checkOut-con{
+#order-page3 .dishlist .checkOut-con,#order-page2 .dishlist .checkOut-con{
 	background:#83d0ba;
 }
-#order-list .dishlist .checkOut-con li,#netmeal .dishlist .checkOut-con li{
+#order-page3 .dishlist .checkOut-con li,#order-page2 .dishlist .checkOut-con li{
 	font-size: 1.1em;
 	
 }
-#order-list .dishlist .checkOut-lists .checkOut-list,#netmeal .dishlist .checkOut-lists .checkOut-list{
+#order-page3 .dishlist .checkOut-lists .checkOut-list,#order-page2 .dishlist .checkOut-lists .checkOut-list{
 	background:#E3E3E3;
 	border-bottom: 1px solid #CCCCCC;
 }
-#order-list .dishlist .checkOut-lists .checkOut-list.active,#netmeal .dishlist .checkOut-lists .checkOut-list.active{
+#order-page3 .dishlist .checkOut-lists .checkOut-list.active,#order-page2 .dishlist .checkOut-lists .checkOut-list.active{
 	color:#FFFFFF;
 	background:#95D3C1;
 }
-#order-list .dishlist .checkOutpage,#netmeal .dishlist .checkOutpage,#jiaobanliushui .checkOutpage{
+#order-page3 .dishlist .checkOutpage,#order-page2 .dishlist .checkOutpage,#jiaobanliushui .checkOutpage{
 	background: rgba(151,151,151,0.3);
 	font-size: 1.2em;
 }
-#order-list .dishlist .checkOutpage li,#netmeal .dishlist .checkOutpage li,#jiaobanliushui .checkOutpage li{
+#order-page3 .dishlist .checkOutpage li,#order-page2 .dishlist .checkOutpage li,#jiaobanliushui .checkOutpage li{
 	background: url("../img/page-bg1.png");
 	background-size:cover ;
 } 
-#order-list .dishlist .checkOutpage li.page-num.active,#netmeal .dishlist .checkOutpage li.page-num.active,#jiaobanliushui .checkOutpage li.page-num.active{
+#order-page3 .dishlist .checkOutpage li.page-num.active,#order-page2 .dishlist .checkOutpage li.page-num.active,#jiaobanliushui .checkOutpage li.page-num.active{
 	background: #00BE88;
 	color:#FFFFFF;
 }
-#order-list .dishlist .checkOutpage li.circle,#netmeal .dishlist .checkOutpage li.circle,#jiaobanliushui .checkOutpage li.circle{
+#order-page3 .dishlist .checkOutpage li.circle,#order-page2 .dishlist .checkOutpage li.circle,#jiaobanliushui .checkOutpage li.circle{
 	background: url("../img/page-bg.png");
 }
-#order-list .dishlist .checkOutpage li:last-child img,#netmeal .dishlist .checkOutpage li:last-child img,#jiaobanliushui .checkOutpage li:last-child img{
+#order-page3 .dishlist .checkOutpage li:last-child img,#order-page2 .dishlist .checkOutpage li:last-child img,#jiaobanliushui .checkOutpage li:last-child img{
 	background: url("../img/page-bg1.png") no-repeat;
 	background-size:100% 100% ;
 }
 /*反结算   购物车菜单数量弹出框*/
-#order .dishCount-outer p.tishi{
+#order-page1 .dishCount-outer p.tishi{
 	border:1px solid #FF0000;
 	background: #FFFFFF;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-#order-list .fanjiesuan-outer,#order .dishCount-outer{
+#order-page3 .fanjiesuan-outer,#order-page1 .dishCount-outer{
 	background: #646464;
 }
-#order-list .fanjiesuan-outer input,#order .dishCount-outer input{
+#order-page3 .fanjiesuan-outer input,#order-page1 .dishCount-outer input{
 	border:1px solid #FAAE74;
 	box-shadow: 0 0 5px #FAAE74;
 }
-#order-list .fanjiesuan-outer button,#order .dishCount-outer button{
+#order-page3 .fanjiesuan-outer button,#order-page1 .dishCount-outer button{
 	font-size: 1.3em;
 	color:#FFFFFF;
 }
-#order-list .fanjiesuan-outer button:first-child{
+#order-page3 .fanjiesuan-outer button:first-child{
 	background: #7CC690;
 }
-#order .dishCount-outer button:first-child{
+#order-page1 .dishCount-outer button:first-child{
 	background: #7CC690;
 }
-#order-list .fanjiesuan-outer button:last-child{
+#order-page3 .fanjiesuan-outer button:last-child{
 	background: #FAAE74;
 }
-#order .dishCount-outer button:last-child{
+#order-page1 .dishCount-outer button:last-child{
 	background: #FAAE74;
 }
-#order-list .fanjiesuan-outer .enterKey,#order .dishCount-outer .enterKey{
+#order-page3 .fanjiesuan-outer .enterKey,#order-page1 .dishCount-outer .enterKey{
 	font-size: 2em;
 }
 /*网络取餐*/
-#netmeal .dishlist .checkOutbtns li.active{
+#order-page2 .dishlist .checkOutbtns li.active{
 	background: #09694E;
 }
-#netmeal .handle button{
+#order-page2 .handle button{
 	background:#00BE88;
 	color:#FFFFFF;
 	font-size: 1.2em;
 }
-#netmeal .handle button:active{
+#order-page2 .handle button:active{
 	background:#09694E;
 }
 /*交班*/

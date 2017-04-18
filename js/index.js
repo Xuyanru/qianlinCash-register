@@ -64,6 +64,37 @@ $(function(){
 		}
 		
 	});
+	
+//主要内容滑屏切换
+$("#header .nav li").click(function(){
+	if(!($("#main .maincontent").hasClass("active"))){
+		if(!($(this).hasClass("active"))){
+			var idx=$(this).index()+1;
+			var preidx=$("#header .nav li.active").index();
+			$("#main .maincontent").addClass("active");
+			$("header .nav li").css("pointer-events","none");
+			if(idx>preidx){
+				$("#header .nav li.active").removeClass("active");
+				$("#main .maincontent>div:first-child").after($("#order-page"+idx));
+				$("#main .maincontent").animate({"left":"-100%"},500,function(){
+					$("#main .maincontent").append($("#main .maincontent>div:first-child"));
+					$("#main .maincontent").css("left","0");
+					$("#main .maincontent").removeClass("active");
+					$("header .nav li").css("pointer-events","auto");
+				});
+			}else{
+				$("#main .maincontent>div:first-child").before($("#order-page"+idx));
+				$("#main .maincontent").css("left","-100%");
+				$("#main .maincontent").animate({"left":"0"},500,function(){
+					$("#main .maincontent").removeClass("active");
+					$("header .nav li").css("pointer-events","auto");
+				});
+			}
+			
+		}	
+	}
+	
+});
 //	堂食外带切换
 	$(".diancanleft ul.mingxi").on("click","li",function(){
 		if($(this).hasClass("change")){	
@@ -90,24 +121,24 @@ $(function(){
 						$.each(data, function(i,item){
 								$(infofrag).append("<li id="+item.ID+" class='lf'><p class='foodname'>"+item.FoodName+"</p><p class='foodprice'>￥"+item.Price.toFixed(2)+"</p></li>");
 						});
-						$("#order .diancanright .dishinner").html("").append(infofrag);
+						$("#order-page1 .diancanright .dishinner").html("").append(infofrag);
 					
-				$("#order .diancanright .dishouterin").scrollTop(0);
-				$("#order .diancanleft div.lists").each(function(i,item){
+				$("#order-page1 .diancanright .dishouterin").scrollTop(0);
+				$("#order-page1 .diancanleft div.lists").each(function(i,item){
 					var count=$(this).children().children("li.count").html();
 					var iD=$(this).attr("id").substring(0,$(this).attr("id").length-1);
 					$("#"+iD).addClass("active").append("<p class='selectIcon'>"+count+"</p>");
 				});
 				
-				if($("#order .diancanright ul.dishinner").height()>470){
-					$("#order .diancanright div.top").css("background","rgba(200,200,200,0.5)");
-					$("#order .diancanright div.top").show();
-					$("#order .diancanright div.bottom").show();
-					$("#order .diancanright div.dishouter").css({"padding":"35px 0px"});
+				if($("#order-page1 .diancanright ul.dishinner").height()>470){
+					$("#order-page1 .diancanright div.top").css("background","rgba(200,200,200,0.5)");
+					$("#order-page1 .diancanright div.top").show();
+					$("#order-page1 .diancanright div.bottom").show();
+					$("#order-page1 .diancanright div.dishouter").css({"padding":"35px 0px"});
 				}else{
-					$("#order .diancanright div.top").hide();
-					$("#order .diancanright div.bottom").hide();
-					$("#order .diancanright div.dishouter").css({"padding":"0px"});
+					$("#order-page1 .diancanright div.top").hide();
+					$("#order-page1 .diancanright div.bottom").hide();
+					$("#order-page1 .diancanright div.dishouter").css({"padding":"0px"});
 				}
 				$("#wellcome").fadeOut();
 				$("#loading").hide();
@@ -118,28 +149,28 @@ $(function(){
 
 	}
 //	点击菜品上下滚动条滚动菜品
-$("#order .diancanright div.dishpage").click(function(){
+$("#order-page1 .diancanright div.dishpage").click(function(){
 	if($(this).hasClass("top")){
-		$("#order .diancanright .dishouterin").animate({
-			"scrollTop":$("#order .diancanright .dishouterin").scrollTop()-470+"px"
+		$("#order-page1 .diancanright .dishouterin").animate({
+			"scrollTop":$("#order-page1 .diancanright .dishouterin").scrollTop()-470+"px"
 		},500);
 	}else{
-		$("#order .diancanright .dishouterin").animate({
-			"scrollTop":$("#order .diancanright .dishouterin").scrollTop()+470+"px"
+		$("#order-page1 .diancanright .dishouterin").animate({
+			"scrollTop":$("#order-page1 .diancanright .dishouterin").scrollTop()+470+"px"
 			},500);
 	}
 		
 });
-$("#order .diancanright .dishouterin").scroll(function(){
-	if($(this).scrollTop()>$("#order .diancanright .dishouterin .dishinner").height()-470){
-		$("#order .diancanright div.bottom").css("background","rgba(200,200,200,0.5)");
-			$("#order .diancanright div.top").css("background","rgba(255,255,255,0.5)");
+$("#order-page1 .diancanright .dishouterin").scroll(function(){
+	if($(this).scrollTop()>$("#order-page1 .diancanright .dishouterin .dishinner").height()-470){
+		$("#order-page1 .diancanright div.bottom").css("background","rgba(200,200,200,0.5)");
+			$("#order-page1 .diancanright div.top").css("background","rgba(255,255,255,0.5)");
 	}else if($(this).scrollTop()==0){
-				$("#order .diancanright div.top").css("background","rgba(200,200,200,0.5)");
-				$("#order .diancanright div.bottom").css("background","rgba(255,255,255,0.5)");
+				$("#order-page1 .diancanright div.top").css("background","rgba(200,200,200,0.5)");
+				$("#order-page1 .diancanright div.bottom").css("background","rgba(255,255,255,0.5)");
 	}else{
-		$("#order .diancanright div.bottom").css("background","rgba(255,255,255,0.5)");
-		$("#order .diancanright div.top").css("background","rgba(255,255,255,0.5)");
+		$("#order-page1 .diancanright div.bottom").css("background","rgba(255,255,255,0.5)");
+		$("#order-page1 .diancanright div.top").css("background","rgba(255,255,255,0.5)");
 	}
 });
 	
@@ -157,17 +188,18 @@ $("#order .diancanright .dishouterin").scroll(function(){
 				$.each(data, function(i,item){
 					$(menufrag).append("<li id="+item.ID+" class='lf'>"+item.FoodName+"</li>");
 				});
-				$("#order .diancanright .contain .menu").html("").append(menufrag);
-				$("#order .diancanright .contain .menu li:first-child").addClass("active");
-				$("#order .diancanright .contain .menu").css("width",data.length*82+"px");
+				$("#order-page1 .diancanright .contain .menu").html("").append(menufrag);
+				$("#order-page1 .diancanright .contain .menu li:first-child").addClass("active");
+				$("#order-page1 .diancanright .contain .menu").css("width",data.length*82+"px");
 			}
 		});
 		$("#header .nav li:first-child").addClass("active");
 //		获取菜单列表
 		foodInfo("http://xjucan.com/api/api/WebDinner/GetFoodInfo?typeid=68c1767e-fd6d-4cba-919b-095c2d3f4c28&shopid=29");	
 	}
-//	
-//	
+  
+  
+  
 	//登录页点击登录按钮页面跳转
 	$("#loginBtn a").click(function(){
 //		从后台获取用户名与密码是否匹配的返回信息
@@ -180,19 +212,17 @@ $("#order .diancanright .dishouterin").scroll(function(){
 //	});
 	var msg="success";
 	if(msg=="success"){
-		$("#wellcome").fadeIn();
-		$("#logIn").removeClass("active");
+		$("#wellcome").show();
 		//		判断用户是否记住密码
 		if($("#check").hasClass("active")){
 			window.localStorage.setItem($("#username").val(),$("#userpass").val());
 		}else if(!($("#check").hasClass("active"))){
 			window.localStorage.clear($("#username").val());
 		}
-		
+		$("#content-outer").css("left","-100%");
 		$("#username").val("");
 		$("#userpass").val("");
 		getFood();
-		$("#content").addClass("active");
 	}
 	
 	});
@@ -218,10 +248,10 @@ $("#order .diancanright .dishouterin").scroll(function(){
 	
 	
 	//点击菜单按钮切换菜单内容
-	$("#order .diancanright .menu").on("click","li",function(){
+	$("#order-page1 .diancanright .menu").on("click","li",function(){
 		if(!($(this).hasClass("active"))){
 			$("#loading").show();
-			$("#order .diancanright .menu li.active").removeClass("active");
+			$("#order-page1 .diancanright .menu li.active").removeClass("active");
 			$(this).addClass("active");	
 			foodInfo("http://xjucan.com/api/api/WebDinner/GetFoodInfo?typeid=68c1767e-fd6d-4cba-919b-095c2d3f4c28&shopid=29");
 		}
@@ -230,19 +260,19 @@ $("#order .diancanright .dishouterin").scroll(function(){
 //	通过购物车计算总价
 	function totlePrice(){
 		var totle=0;
-		$("#order .diancanleft div.lists").each(function(){
+		$("#order-page1 .diancanleft div.lists").each(function(){
 			var price=parseFloat($(this).find("li.price").html());
 			var count=parseFloat($(this).find("li.count").html());
 			totle+=price*count;
 			
 		});
-		$("#order .diancanleft .orderfooter span").html(totle.toFixed(2));
+		$("#order-page1 .diancanleft .orderfooter span").html(totle.toFixed(2));
 	}
 //	购物车添加菜品
 	function cartlist(str){
 		if(!($(str).hasClass("active"))){
 			$(str).addClass("active").append("<p class='selectIcon'>1</p>");
-			$("#order .diancanleft .orderlists").append('<div id="'+$(str).attr("id")+'s" class="lists clear"><ul class="lists-item  clear"><li class="down lf"><img src="img/01-xin-s_72.png" alt="" /></li><li class="lf list-number canclick">'+($(".diancanleft div.lists").length+1)+'</li><li class="lf dishname canclick">'+$(str).find("p.foodname").html()+'</li><li class="lf price canclick">'+$(str).find("p.foodprice").html().slice(1)+'</li><li class="lf count canclick">'+$(str).children("p.selectIcon").html()+'</li><li class="lf delete"><img src="img/01-xin-s_65.png" alt="" /></li></ul></div>');
+			$("#order-page1 .diancanleft .orderlists").append('<div id="'+$(str).attr("id")+'s" class="lists clear"><ul class="lists-item  clear"><li class="down lf"><img src="img/01-xin-s_72.png" alt="" /></li><li class="lf list-number canclick">'+($(".diancanleft div.lists").length+1)+'</li><li class="lf dishname canclick">'+$(str).find("p.foodname").html()+'</li><li class="lf price canclick">'+$(str).find("p.foodprice").html().slice(1)+'</li><li class="lf count canclick">'+$(str).children("p.selectIcon").html()+'</li><li class="lf delete"><img src="img/01-xin-s_65.png" alt="" /></li></ul></div>');
 			
 		}else{
 			$(str).children("p.selectIcon").html(parseInt($(str).children("p.selectIcon").html())+1);
@@ -252,7 +282,7 @@ $("#order .diancanright .dishouterin").scroll(function(){
 	}
 	
 	//	点击菜品购物车出现相应菜品
-	$("#order .diancanright").on("click","ul.dishinner li",function(){
+	$("#order-page1 .diancanright").on("click","ul.dishinner li",function(){
 		var str="#"+$(this).attr("id");
 		cartlist(str);
 		var me=this;
@@ -265,7 +295,7 @@ $("#order .diancanright .dishouterin").scroll(function(){
 	});
 
 //点击购物车菜品前的下拉按钮弹出备注框
-$("#order .diancanleft .orderlists").on("click","div.lists ul.lists-item li.down",function(){
+$("#order-page1 .diancanleft .orderlists").on("click","div.lists ul.lists-item li.down",function(){
 	 $("input").removeAttr("checked");
 	$(".bzdialog").addClass("animated fadeInRightBig").show();
 	$(".bzdialog").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -273,7 +303,7 @@ $("#order .diancanleft .orderlists").on("click","div.lists ul.lists-item li.down
 		});
 	var iD=$(this).parent("ul").parent("div").attr("id");
 //	点击确定按钮
-	$("#order .bzdialoginner .bzbtn li").click(function(){ 
+	$("#order-page1 .bzdialoginner .bzbtn li").click(function(){ 
 		if(($(this).hasClass("bzconfirm"))&&$("#bzitem input:checked").length){
 			if(!($("#"+iD).children("div.bz").length)){
 				$("#"+iD).append("<div class='bz'><p class='lf'><span>备注</span></p><ul class='bzlist lf'></ul></div>");
@@ -295,55 +325,61 @@ $("#order .diancanleft .orderlists").on("click","div.lists ul.lists-item li.down
 	});
 });
 //点击购物车列表删除按钮删除该菜品
-$("#order .diancanleft").on("click","div.lists ul.lists-item li.delete",function(){
+$("#order-page1 .diancanleft").on("click","div.lists ul.lists-item li.delete",function(){
 	var iD=$(this).parent("ul").parent("div.lists").attr("id");
 	iD=$(this).parent("ul").parent("div.lists").attr("id").substring(0,iD.length-1);
 	$("#"+iD).removeClass("active").children("p.selectIcon").remove();
 	$(this).parent("ul").parent("div.lists").remove();
-	$("#order .diancanleft div.lists ul.lists-item li.list-number").each(function(i,item){
+	$("#order-page1 .diancanleft div.lists ul.lists-item li.list-number").each(function(i,item){
 		$(this).html($(this).parent("ul.lists-item").parent("div.lists").index()+1);
 	});
 	totlePrice();
 });
 
 //点击已选菜品弹出输入数量框
-$("#order .orderlists").on("click",".lists .lists-item li.canclick",function(){
-	$(this).parent().parent().addClass("active");
-	$("#order .dishCount-outer").show();
+$("#order-page1 .orderlists").on("click",".lists .lists-item li.canclick",function(){
+	if($("#order-page1 .orderlists .lists.active").length==0){
+		$(this).parent().parent().addClass("active");
+		$("#order-page1 .dishCount-outer").show();
+	}
 	
-})
-$("#order .dishCount-outer .dishCount-confirm").click(function(){
-	if($("#order .dishCount-outer input").val()>0){
-		var ids=$("#order .orderlists div.lists.active").attr("id");
+});
+$("#order-page1 .dishCount-outer .dishCount-confirm").click(function(){
+	if($("#order-page1 .dishCount-outer input").val()>0){
+		var ids=$("#order-page1 .orderlists div.lists.active").attr("id");
 		var str="#"+(ids.slice(0,ids.length-1));
-		$(str).children("p.selectIcon").html($("#order .dishCount-outer input").val());
+		$(str).children("p.selectIcon").html($("#order-page1 .dishCount-outer input").val());
 		$(str+"s li.count").html($(str).children("p.selectIcon").html());
 		totlePrice();
-		$("#order .dishCount-outer").hide();
-		$("#order .dishCount-outer input").val("");
-	}else if($("#order .dishCount-outer input").val()=="0"){
-		$("#order .dishCount-outer>p").fadeIn();
+		$("#order-page1 .dishCount-outer").hide();
+		$("#order-page1 .orderlists .lists.active").removeClass("active");
+		$("#order-page1 .dishCount-outer input").val("");
+	}else if($("#order-page1 .dishCount-outer input").val()=="0"){
+		$("#order-page1 .dishCount-outer>p").fadeIn();
 		window.setTimeout(function(){
-			$("#order .dishCount-outer>p").fadeOut();
+			$("#order-page1 .dishCount-outer>p").fadeOut();
 		},2000);
 	}else{
-		$("#order .dishCount-outer").hide();
+		$("#order-page1 .dishCount-outer").hide();
+		$("#order-page1 .orderlists .lists.active").removeClass("active");
 	}
 });
-$("#order .dishCount-outer .dishCount-cancel").click(function(){
-	$("#order .dishCount-outer").hide();
-	$("#order .dishCount-outer input").val("");
+$("#order-page1 .dishCount-outer .dishCount-cancel").click(function(){
+	$("#order-page1 .dishCount-outer").hide();
+	$("#order-page1 .orderlists .lists.active").removeClass("active");
+	$("#order-page1 .dishCount-outer input").val("");
 });
-$("#header .nav li,#order .footbtns li").click(function(){
-	$("#order .dishCount-outer").hide();
-	$("#order .dishCount-outer input").val("");
+$("#header .nav li,#order-page1 .footbtns li").click(function(){
+	$("#order-page1 .dishCount-outer").hide();
+	$("#order-page1 .orderlists .lists.active").removeClass("active");
+	$("#order-page1 .dishCount-outer input").val("");
 });
 //软键盘输入
-$("#order .dishCount-outer .enterKey").on("click","li",function(){
+$("#order-page1 .dishCount-outer .enterKey").on("click","li",function(){
 	if($(this).hasClass("clearAll")){
-		$("#order .dishCount-outer input").val("");
+		$("#order-page1 .dishCount-outer input").val("");
 	}else{
-		$("#order .dishCount-outer input").val($("#order .dishCount-outer input").val()+$(this).children().html());
+		$("#order-page1 .dishCount-outer input").val($("#order-page1 .dishCount-outer input").val()+$(this).children().html());
 	}
 	
 });
@@ -351,72 +387,205 @@ $("#order .dishCount-outer .enterKey").on("click","li",function(){
 //点击返回或清空按钮清空购物车
 
 function deletedishs(){
-	$("#order .diancanright ul.dishinner li.active").removeClass("active").children("p.selectIcon").remove();
-	$("#order .diancanleft .orderlists").html("");
+	$("#order-page1 .diancanright ul.dishinner li.active").removeClass("active").children("p.selectIcon").remove();
+	$("#order-page1 .diancanleft .orderlists").html("");
 	totlePrice();
 }
-$("#order .diancanright .footbtns").on("click","li",function(){
+$("#order-page1 .diancanright .footbtns").on("click","li",function(){
 	if($(this).hasClass("back")){
 		deletedishs();
-		$("#content").removeClass("active");
-		$("#logIn").addClass("active");
+		$("#content-outer").animate({"left":"0"},500);
 	}else if($(this).hasClass("clearAll")){
 		deletedishs();
 	}
 	
 });
 //结账
-$("#order .diancanright .footbtns li.jzbtn").click(function(){
-	$("#content").removeClass("active");
-	$("#bill").addClass("active");
-});
-$("#bill .subconfirm-btn").click(function(){
-	$("#order .diancanright ul.dishinner li.active").removeClass("active").children("p.selectIcon").remove();
-	$("#order .diancanleft .orderlists").html("");
-	totlePrice();
-	$("#content").addClass("active");
-	$("#bill").removeClass("active");
+function jiezhang(selVal){		
+		if(selVal){
+			$("#bill .billcontent .billRight .subtotle .subtotle-con li.youh span.subprice").html( $("#bill .billcontent .billLeft .enter-price .keyboard .jeinput select").find("option:selected").text());
+			if(selVal.toString().indexOf(".")!=-1){
+				var yingshou=(selVal*$("#bill .billcontent .billRight .subtotle .subtotle-con li.zongje span.subprice").html()/10).toFixed(2);
+				$("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html(yingshou);
+			}else{
+				var yingshou=($("#bill .billcontent .billRight .subtotle .subtotle-con li.zongje span.subprice").html()-selVal).toFixed(2);
+				if(yingshou<=0){
+					$("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html("0.00");
+				}else{
+					$("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html(yingshou);
+				}
+				
+			}
+	}else{
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.youh span.subprice").html("0.00");
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html(sessionStorage.getItem("orderTotle"));
+	}
+}
+function zhaoling(){
+	var inputV=$("#bill li.shisje-input input").val();
+	if(inputV){
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.shisje span.subprice").html(parseFloat(inputV).toFixed(2));
+	}else{
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.shisje span.subprice").html("0.00");
+	}
+	var zhaol=parseFloat($("#bill .billcontent .billRight .subtotle .subtotle-con li.shisje span.subprice").html())-parseFloat($("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html());
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.zhaol span.subprice").html(zhaol.toFixed(2));
+}
+$("#order-page1 .diancanright .footbtns li.jzbtn").click(function(){
+	if($("#order-page1 .diancanleft .orderfooter span").html()>0){
+		sessionStorage.setItem("orderTotle",$("#order-page1 .diancanleft .orderfooter span").html());
+		$("#content-outer").animate({"left":"-200%"},500);
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.zongje span.subprice").html(sessionStorage.getItem("orderTotle"));
+		$("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html(sessionStorage.getItem("orderTotle"));
+	}
 	
+});
+//优惠选择
+$("#bill .billcontent .billLeft .enter-price .keyboard .jeinput select").change(function(){
+			var selVal=$(this).val();
+			jiezhang(selVal);
+			zhaoling();
+		});
+
+//实收金额输入框
+$("#bill ul.enterKey").on("click","li",function(){
+	if($(this).hasClass("clearAll")){
+		$("#bill li.shisje-input input").val("");
+	}else{
+		if($("#bill .shortcutbtn li.active").length){
+			$("#bill .shortcutbtn li.active").removeClass("active");
+			$("#bill li.shisje-input input").val("");
+		}
+		$("#bill li.shisje-input input").val($("#bill li.shisje-input input").val()+$(this).children().html());
+	}
+	zhaoling();
+});
+//快捷实收金额输入
+
+$("#bill .shortcutbtn li").click(function(){
+	$(this).addClass("active");
+	$("#bill li.shisje-input input").val(parseFloat($(this).html()));
+	zhaoling();
+});
+
+
+$("#bill .subconfirm-btn,#bill .subcancel-btn").click(function(){
+	deletedishs();
+	$("#bill .billcontent .billRight .subtotle .subtotle-con li.yingsje span.subprice").html("0.00");
+	$("#bill li.shisje-input input").val("");
+	$("#bill .billcontent .billLeft .enter-price .keyboard .jeinput select").val("");
+	var selVal=$("#bill .billcontent .billLeft .enter-price .keyboard .jeinput select").val();
+	jiezhang(selVal);
+	zhaoling();
+	sessionStorage.clear("orderTotle");
+	$("#content-outer").animate({"left":"-100%"},500);
+});
+//网络取餐
+//处理状态选择
+$("#order-page2 .dishlist .checkOutbtns li").click(function(){
+	if(!($(this).hasClass("active"))){
+		$("#order-page2 .dishlist .checkOutbtns li.active").removeClass("active");
+		$(this).addClass("active");
+	}
+});
+
+$("#order-page2 .dishlist .checkOut-lists").on("click","ul.checkOut-list",function(){
+	if(!($(this).hasClass("active"))){
+		$("#order-page2 .dishlist .checkOut-lists ul.checkOut-list.active").removeClass("active");
+		$(this).addClass("active");
+	}
+});
+
+
+
+//反结算
+$("#order-page3 .dishlist .checkOut-lists").on("click",".checkOut-list",function(){
+	if(!($(this).hasClass("action"))){
+		$("#order-page3 .dishlist .checkOut-lists .checkOut-list.active").removeClass("active");
+		$(this).addClass("active");
+	}
 });
 
 //单品反结算
-$("#order-list .orderlists").on("click",".lists",function(){
-	$("#order-list .orderlists .lists.active").removeClass("active");
-	$(this).addClass("active");
-	$("#order-list .fanjiesuan-outer").show();
+$("#order-page3 .orderlists").on("click",".lists",function(){
+	if($("#order-page3 .orderlists .lists.active").length==0){
+		$(this).addClass("active");
+		$("#order-page3 .fanjiesuan-outer").show();
+	}
+	
 });
 	function fanjiesuan(){
-		$("#order-list .fanjiesuan-outer").hide();
-		$("#order-list .fanjiesuan-outer input").val("");
-		$("#order-list .fanjiesuan-outer>div.fanjiesuan-price").hide();
-		$("#order-list .fanjiesuan-outer>div.fanjiesuan-pass").show();
+		$("#order-page3 .fanjiesuan-outer").hide();
+		$("#order-page3 .fanjiesuan-outer input").val("");
+		$("#order-page3 .fanjiesuan-outer>div.fanjiesuan-price").hide();
+		$("#order-page3 .fanjiesuan-outer>div.fanjiesuan-pass").show();
+		$("#order-page3 .fanjiesuan-outer>p").removeClass("warning").html("输入反结算密码与金额！");
 	}
-$("#order-list .fanjiesuan-outer p").on("click","button",function(){
+$("#order-page3 .fanjiesuan-outer p").on("click","button",function(){
 	if($(this).hasClass("fjs-cancel")){
 		fanjiesuan();
+		$("#order-page3 .orderlists .lists.active").removeClass("active");
 	}else if($(this).hasClass("fjs-confirm")){
-		$("#order-list .fanjiesuan-outer>div.fanjiesuan-price").show();
-		$("#order-list .fanjiesuan-outer>div.fanjiesuan-pass").hide();
+		if(!($("#order-page3 .fanjiesuan-outer .fanjiesuan-pass input").val())){
+			$("#order-page3 .fanjiesuan-outer>p").addClass("warning").html("密码不能为空，请重新输入！");
+		}else{
+			$("#order-page3 .fanjiesuan-outer>div.fanjiesuan-price").show();
+			$("#order-page3 .fanjiesuan-outer>div.fanjiesuan-pass").hide();
+			$("#order-page3 .fanjiesuan-outer>p").removeClass("warning").html("输入反结算密码与金额！");
+		}
+		
 	}else if($(this).hasClass("fjspri-confirm")){
-		fanjiesuan();
+		if(!($("#order-page3 .fanjiesuan-outer .fanjiesuan-price input").val())){
+			$("#order-page3 .fanjiesuan-outer>p").addClass("warning").html("反结算金额不能为空，请重新输入！");
+		}else{
+				var acprice=$("#order-page3 .dishlist .checkOut-lists .checkOut-list.active li.shishou").html();
+				if(acprice<$("#order-page3 .fanjiesuan-outer .fanjiesuan-price input").val()){
+					$("#order-page3 .fanjiesuan-outer>p").addClass("warning").html("反结算金额不能大于实收金额，请重新输入！");
+				}else{
+					fanjiesuan();
+					$("#order-page3 .orderlists .lists.active").removeClass("active");
+		}
+			
+		}
+		
 	}
 });
 
 //订单反结算
-$("#order-list .orderHead .mingxi li a").click(
+$("#order-page3 .orderHead .mingxi li a").click(
 	function(){
-		$("#order-list .fanjiesuan-outer").show();
+		if($("#order-page3 .lists.active").length==0){
+			$("#order-page3 .fanjiesuan-outer").show();
+		}
+		
 	}
 	
 );
+//反结算软键盘输入
+$("#order-page3 ul.enterKey li").click(function(){
+	var me=this;
+	$("#order-page3 div.fanjiesuan-outer>div").each(function(){
+		if($(this).css("display")=="block"){
+			if(!($(me).hasClass("clearAll"))){
+				$(this).find("input").val($(this).find("input").val()+$(me).children().html());
+			}else{
+				$(this).find("input").val("");
+			}
+			
+		}
+	});
+});
+
+
+
 	//交班
 //点击按钮页面跳转
 $("#jiaobanMain").on("click",".jbbtns li button",function(){
 	if($(this).parent().hasClass("jbjl")){
-		$("#jiaoban div.active").removeClass("active");
+		$("#order-page4 div.active").removeClass("active");
 		$("#jiaobanRecord").addClass("active");
 	}else if($(this).parent().hasClass("jbls")){
-		$("#jiaoban div.active").removeClass("active");
+		$("#order-page4 div.active").removeClass("active");
 		$("#jiaobanliushui").addClass("active");
 	}
 });
@@ -425,5 +594,22 @@ $(".jbR-foot-cancel").on("click","button",function(){
 	$("#jiaoban div.active").removeClass("active");
 	$("#jiaobanMain").addClass("active");
 });
+//新增周转和留存现金软键盘输入
+$("#jiaobanMain .jbmsg input").focus(function(){
+	if(!$(this).hasClass("active")){
+		$("#order-page4 .jbmsg input.active").removeClass("active");
+		$(this).addClass("active");
+	}
+	
+});
+$("#jiaobanMain ul.enterKey li").click(function(){
+		if($(this).hasClass("clearAll")){
+			$("#jiaobanMain .jbmsg input.active").val("");
+		}else if(($(this).hasClass("xiaoshu")&&($("#jiaobanMain .jbmsg input.active").val().indexOf(".")==-1))||($(this).hasClass("numer")&&($("#jiaobanMain .jbmsg input.active").val().indexOf(".")!=-1)&&(($("#jiaobanMain .jbmsg input.active").val().split("."))[1].length<2))||($(this).hasClass("numer")&&($("#jiaobanMain .jbmsg input.active").val().indexOf(".")==-1))){
+			$("#jiaobanMain .jbmsg input.active").val($("#jiaobanMain .jbmsg input.active").val()+$(this).children().html());
+		}
+	});
+
+
 
 });
