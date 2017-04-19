@@ -291,7 +291,7 @@ ul.enterKey li:last-child{
 	color: #FFFFFF;
 	font-weight: bold;
 }
-#order-page3 .lists.active{
+#order-page1 .lists.active,#order-page3 .lists.active{
 	color:#FFFFFF;
 	background: #95D3C1;
 }

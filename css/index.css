@@ -271,6 +271,9 @@ img{
 	height:100%;
 	overflow: hidden;
 }
+#content{
+	position: relative;
+}
 /*页头logo和菜单*/
 #header{
 	width: 100%;
@@ -278,6 +281,126 @@ img{
 /*	background: url("../img/head-bg15.png") no-repeat;*/
 /*	background-size:cover;*/
 }
+#setUp{
+	position: absolute;
+	top:-125px;
+	left: 670px;
+	width:200px;
+	z-index: 100;
+	overflow: hidden;
+}
+#setUp ul ul{
+	width: 200px;
+	overflow: hidden;
+	border-radius: 3px;
+}
+#setUp>ul li ul li>div{
+	padding-top:5px;
+	box-shadow: 0px 0px 8px #000000;
+	border-radius: 5px;
+}
+#setUp>ul>li>div.last-item{
+	padding:10px;
+	width:180px;
+	margin:20px 10px 10px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #000000;
+	height:80px;
+	background: #FFFFFF;
+}
+#setUp ul.setitem{
+	position: relative;
+	left: -200px;
+	width:600px;
+	background: #FFFFFF;
+	height:120px;
+	background: url("../img/muwen-bg.png") no-repeat;
+	background-size:100% 100% ;
+}
+#setUp ul.setitem li div.back-text img{
+	margin-top:2px;
+}
+#setUp ul.setitem ul li{
+	margin:10px 10px 5px 10px;
+	width:80px;
+	background: #FFFFFF;
+}
+#setUp ul.setitem ul li:last-child{
+	margin-right: 0px;
+	margin:10px 10px 5px 10px;
+}
+#setUp ul.setitem li.main-style li{
+	margin:20px 10px 5px 10px;
+}
+#setUp ul.setitem li.main-style li:last-child{
+	margin:20px 10px 5px 10px;
+}
+#setUp ul.setitem li p.img{
+	width: 100%;
+	height:40px;
+}
+#setUp ul.setitem li.main-style p.img{
+	height: 50px;
+}
+#setUp ul.setitem li p.text{
+	height: 20px;
+	line-height: 20px;
+}
+#setUp ul.setitem li.style-change p.img{
+	background: url("../img/style.png") no-repeat center center;
+}
+#setUp ul.setitem li.quit-system p.img{
+	background: url("../img/quit.png") no-repeat center center;
+}
+#setUp div.down-up div.txtcenter{
+	width:80px;
+	height:60px;
+	background: url("../img/down-up-bg.png") no-repeat;
+	margin-left: 60px;
+	overflow: hidden;
+	position: relative;
+}
+#setUp div.down-up div.txtcenter>div{
+	width:80px;
+	height:40px;
+	margin-top:20px;
+	position: relative;
+	overflow: hidden;
+}
+#setUp div.down-up div.txtcenter a{
+	display: block;
+	width: 80px;
+	position: absolute;
+	top:0;	
+}
+#setUp div.down-up div.txtcenter img:first-child{
+	margin-top:5px;
+	margin-bottom: 20px;
+}
+#setUp ul.setitem  div.last-item p:last-child{
+	height: 20px;
+	line-height: 20px;
+}
+#setUp ul.setitem  div.last-item p:last-child button{
+	width:60px;
+	height:30px;
+	line-height: 30px;
+	background: #FA9843;
+}
+#setUp ul.setitem div.last-item p:last-child button:first-child{
+	margin-right: 10px;
+	background: #00BE88;
+}
+#setUp ul.setitem div.last-item p:first-child{
+	color: red;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+
+
+
 #header .color-modal{
 	margin-left: 30px;
 }
@@ -433,8 +556,8 @@ img{
 	text-align: center;
 }
 .dishOrder .ordercontent ul.lists-item li{
-	height:25px;
-	line-height: 25px;
+	height:35px;
+	line-height: 35px;
 }
 .dishOrder .ordercontent ul.ordertitle{
 	padding-left: 30px;
@@ -589,7 +712,7 @@ img{
 	color:red;
 }
 .dishlist .contain .dishouter .dishinner li p.selectIcon{
-	width:20px;
+	width:25px;
 	height:15px;
 	line-height: 15px;
 	/*background: url("../img/01-xin-s_31.png");*/
@@ -638,7 +761,7 @@ img{
 	left: 0;
 	background: rgba(0,0,0,0.8);
 	display: none;
-	z-index: 10;
+	z-index: 101;
 }
 #order-page1  .bzdialoginner{
 	position: absolute;

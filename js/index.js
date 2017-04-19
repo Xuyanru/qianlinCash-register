@@ -9,20 +9,6 @@ $(function(){
 			$(this).removeClass("active");
 		}
 	});
-//	页面风格切换
-	$("#header .color-modal").on("click","span",function(){
-			var color=$(this)[0].className.split("-");
-			color=color[1];
-			$("head link:last-child").attr("href","css/"+color+".css");
-			var imgsrc=[];
-			$(".checkOutpage li img").each(function(){
-				var imgsrc=$(this).attr("src").split("-");
-				var imgsrc1=imgsrc[0];
-				var imgsrc2=color+"."+imgsrc[1].split(".")[1]
-				imgsrc=imgsrc1+"-"+imgsrc2;
-				$(this).attr("src",imgsrc);
-			});
-	});
 //	登录页面
 
 	function getUers(){
@@ -72,7 +58,7 @@ $("#header .nav li").click(function(){
 			var idx=$(this).index()+1;
 			var preidx=$("#header .nav li.active").index();
 			$("#main .maincontent").addClass("active");
-			$("header .nav li").css("pointer-events","none");
+			$("header .nav").attr("disabled","true");
 			if(idx>preidx){
 				$("#header .nav li.active").removeClass("active");
 				$("#main .maincontent>div:first-child").after($("#order-page"+idx));
@@ -80,21 +66,115 @@ $("#header .nav li").click(function(){
 					$("#main .maincontent").append($("#main .maincontent>div:first-child"));
 					$("#main .maincontent").css("left","0");
 					$("#main .maincontent").removeClass("active");
-					$("header .nav li").css("pointer-events","auto");
+					$("header .nav").attr("disabled","false");
 				});
 			}else{
 				$("#main .maincontent>div:first-child").before($("#order-page"+idx));
 				$("#main .maincontent").css("left","-100%");
 				$("#main .maincontent").animate({"left":"0"},500,function(){
 					$("#main .maincontent").removeClass("active");
-					$("header .nav li").css("pointer-events","auto");
+					$("header .nav").attr("disabled","false");
 				});
 			}
 			
 		}	
+	}else{
+		return false;
 	}
 	
 });
+//设置按钮点击下拉
+$("#setUp div.down-up div.txtcenter a").click(function(e){
+	e.preventDefault();
+	if($(this).hasClass("active")){
+		autoup();
+	}else{
+		$("#setUp").animate({
+		"top":"0"
+		},500,function(){
+			
+		}.bind(this));
+		$(this).addClass("active");
+		$(this).animate({
+			"top":"-50px"
+		},500);
+	}
+	
+});
+function autoup(){
+	$("#setUp").animate({
+			"top":"-125px"
+		},500,function(){
+			$("#setUp div.down-up a").removeClass("active");
+			$("#setUp ul.setitem").css("left","-200px");
+		});
+		$("#setUp div.down-up a").animate({
+			"top":"0px"
+		},500);
+}
+//点击风格切换或退出系统
+$("#setUp ul.setitem li.main-style li").click(function(){
+	if($(this).hasClass("style-change")){
+		$("#setUp ul.setitem").animate({
+			"left":"0"
+		},500);
+	}else{
+		$("#setUp ul.setitem").animate({
+			"left":"-400px"
+		},500);
+	}
+});
+$("#header .nav,#content .maincontent").click(function(){
+		if($("#setUp div.down-up a").hasClass("active")){
+			autoup();
+		}
+	}
+);
+//	页面风格切换
+	$("#setUp .color-modal").on("click","li",function(){
+			var color=$(this)[0].className.split("-");
+			color=color[1];
+			$("head link:last-child").attr("href","css/"+color+".css");
+			var imgsrc=[];
+			$(".checkOutpage li img").each(function(){
+				var me=this;
+				pining(me,color);
+			});
+			var me=$("#setUp div.back-text img");
+			pining(me,color);
+	});
+	function pining(me,color){
+		var imgsrc=$(me).attr("src").split("-");
+		var imgsrc1=imgsrc[0];
+		var imgsrc2=color+"."+imgsrc[1].split(".")[1]
+		imgsrc=imgsrc1+"-"+imgsrc2;
+		$(me).attr("src",imgsrc);
+	}
+	
+//退出系统
+$("#setUp div.last-item button").click(function(){
+	if($(this).hasClass("quit-confirm")){
+		$("#content-outer").animate({
+			"left":"0"
+		},500,function(){
+			$("#main .maincontent>div:first-child").before($("#order-page1"));
+			$("#main .maincontent").css("left","0");
+			$("#header ul.nav li.active").removeClass("active");
+			$("#header ul.nav li:first-child").addClass("active");
+			autoup();
+		});		
+	}
+	$("#setUp ul.setitem").animate({
+			"left":"-200px"
+		},500);
+});
+$("#setUp ul.setitem li div.back-text img").click(function(){
+	$("#setUp ul.setitem").animate({
+		"left":"-200px"
+	},500);
+});
+
+
 //	堂食外带切换
 	$(".diancanleft ul.mingxi").on("click","li",function(){
 		if($(this).hasClass("change")){	
@@ -344,11 +424,12 @@ $("#order-page1 .orderlists").on("click",".lists .lists-item li.canclick",functi
 	}
 	
 });
-$("#order-page1 .dishCount-outer .dishCount-confirm").click(function(){
+$("#order-page1 .dishCount-outer .dishCount-confirm").click(function(e){
+	e.preventDefault();
 	if($("#order-page1 .dishCount-outer input").val()>0){
 		var ids=$("#order-page1 .orderlists div.lists.active").attr("id");
 		var str="#"+(ids.slice(0,ids.length-1));
-		$(str).children("p.selectIcon").html($("#order-page1 .dishCount-outer input").val());
+		$(str).children("p.selectIcon").html(parseInt($("#order-page1 .dishCount-outer input").val()));
 		$(str+"s li.count").html($(str).children("p.selectIcon").html());
 		totlePrice();
 		$("#order-page1 .dishCount-outer").hide();
@@ -378,9 +459,9 @@ $("#header .nav li,#order-page1 .footbtns li").click(function(){
 $("#order-page1 .dishCount-outer .enterKey").on("click","li",function(){
 	if($(this).hasClass("clearAll")){
 		$("#order-page1 .dishCount-outer input").val("");
-	}else{
-		$("#order-page1 .dishCount-outer input").val($("#order-page1 .dishCount-outer input").val()+$(this).children().html());
-	}
+	}else if(($(this).hasClass("xiaoshu")&&($("#order-page1 .dishCount-outer input").val().indexOf(".")==-1))||($(this).hasClass("numer")&&($("#order-page1 .dishCount-outer input").val().indexOf(".")!=-1)&&(($("#order-page1 .dishCount-outer input").val().split("."))[1].length<2))||($(this).hasClass("numer")&&($("#order-page1 .dishCount-outer input").val().indexOf(".")==-1))){
+			$("#order-page1 .dishCount-outer input").val($("#order-page1 .dishCount-outer input").val()+$(this).children().html());
+		}
 	
 });
 
@@ -451,12 +532,12 @@ $("#bill .billcontent .billLeft .enter-price .keyboard .jeinput select").change(
 $("#bill ul.enterKey").on("click","li",function(){
 	if($(this).hasClass("clearAll")){
 		$("#bill li.shisje-input input").val("");
-	}else{
-		if($("#bill .shortcutbtn li.active").length){
+	}else if($("#bill .shortcutbtn li.active").length){
 			$("#bill .shortcutbtn li.active").removeClass("active");
 			$("#bill li.shisje-input input").val("");
-		}
-		$("#bill li.shisje-input input").val($("#bill li.shisje-input input").val()+$(this).children().html());
+			$("#bill li.shisje-input input").val($("#bill li.shisje-input input").val()+$(this).children().html());
+	}else if(($(this).hasClass("xiaoshu")&&($("#bill li.shisje-input input").val().indexOf(".")==-1))||($(this).hasClass("numer")&&($("#bill li.shisje-input input").val().indexOf(".")!=-1)&&(($("#bill li.shisje-input input").val().split("."))[1].length<2))||($(this).hasClass("numer")&&($("#bill li.shisje-input input").val().indexOf(".")==-1))){
+			$("#bill li.shisje-input input").val($("#bill li.shisje-input input").val()+$(this).children().html());
 	}
 	zhaoling();
 });
@@ -566,11 +647,14 @@ $("#order-page3 ul.enterKey li").click(function(){
 	var me=this;
 	$("#order-page3 div.fanjiesuan-outer>div").each(function(){
 		if($(this).css("display")=="block"){
-			if(!($(me).hasClass("clearAll"))){
-				$(this).find("input").val($(this).find("input").val()+$(me).children().html());
-			}else{
+			if($(me).hasClass("clearAll")){
 				$(this).find("input").val("");
-			}
+				
+			}else if((!$(me).hasClass("clearAll"))&&$(me).hasClass("fanjiesuan-pass")){
+				$(this).find("input").val($(this).find("input").val()+$(me).children().html());
+			}else if(($(me).hasClass("xiaoshu")&&($(this).find("input").val().indexOf(".")==-1))||($(me).hasClass("numer")&&($(this).find("input").val().indexOf(".")!=-1)&&(($(this).find("input").val().split("."))[1].length<2))||($(me).hasClass("numer")&&($(this).find("input").val().indexOf(".")==-1))){
+			$(this).find("input").val($(this).find("input").val()+$(me).children().html());
+	}
 			
 		}
 	});
