@@ -152,7 +152,8 @@ $("#header .nav,#content .maincontent").click(function(){
 	}
 	
 //退出系统
-$("#setUp div.last-item button").click(function(){
+$("#setUp div.last-item button").click(function(e){
+	e.preventDefault();
 	if($(this).hasClass("quit-confirm")){
 		$("#content-outer").animate({
 			"left":"0"
@@ -193,6 +194,7 @@ $("#setUp ul.setitem li div.back-text img").click(function(){
 			type:"get",
 			url:urlstr,
 			dataType:"json",
+			timeout:500,
 			async:true,
 			success: function(data){
 	  			var data=JSON.parse(data).foodinfos;	
@@ -222,6 +224,12 @@ $("#setUp ul.setitem li div.back-text img").click(function(){
 				}
 				$("#wellcome").fadeOut();
 				$("#loading").hide();
+			},
+			complete:function(){
+				if(status=="timeout"){
+					foodInfo(urlstr);
+					 $("#loading").show();
+				}
 			}
 
 		});
@@ -330,7 +338,6 @@ $("#order-page1 .diancanright .dishouterin").scroll(function(){
 	//点击菜单按钮切换菜单内容
 	$("#order-page1 .diancanright .menu").on("click","li",function(){
 		if(!($(this).hasClass("active"))){
-			$("#loading").show();
 			$("#order-page1 .diancanright .menu li.active").removeClass("active");
 			$(this).addClass("active");	
 			foodInfo("http://xjucan.com/api/api/WebDinner/GetFoodInfo?typeid=68c1767e-fd6d-4cba-919b-095c2d3f4c28&shopid=29");
@@ -445,7 +452,8 @@ $("#order-page1 .dishCount-outer .dishCount-confirm").click(function(e){
 		$("#order-page1 .orderlists .lists.active").removeClass("active");
 	}
 });
-$("#order-page1 .dishCount-outer .dishCount-cancel").click(function(){
+$("#order-page1 .dishCount-outer .dishCount-cancel").click(function(e){
+	e.preventDefault();
 	$("#order-page1 .dishCount-outer").hide();
 	$("#order-page1 .orderlists .lists.active").removeClass("active");
 	$("#order-page1 .dishCount-outer input").val("");
@@ -602,7 +610,8 @@ $("#order-page3 .orderlists").on("click",".lists",function(){
 		$("#order-page3 .fanjiesuan-outer>div.fanjiesuan-pass").show();
 		$("#order-page3 .fanjiesuan-outer>p").removeClass("warning").html("输入反结算密码与金额！");
 	}
-$("#order-page3 .fanjiesuan-outer p").on("click","button",function(){
+$("#order-page3 .fanjiesuan-outer p").on("click","button",function(e){
+	e.preventDefault();
 	if($(this).hasClass("fjs-cancel")){
 		fanjiesuan();
 		$("#order-page3 .orderlists .lists.active").removeClass("active");
@@ -664,7 +673,8 @@ $("#order-page3 ul.enterKey li").click(function(){
 
 	//交班
 //点击按钮页面跳转
-$("#jiaobanMain").on("click",".jbbtns li button",function(){
+$("#jiaobanMain").on("click",".jbbtns li button",function(e){
+	e.preventDefault();
 	if($(this).parent().hasClass("jbjl")){
 		$("#order-page4 div.active").removeClass("active");
 		$("#jiaobanRecord").addClass("active");
@@ -674,7 +684,8 @@ $("#jiaobanMain").on("click",".jbbtns li button",function(){
 	}
 });
 
-$(".jbR-foot-cancel").on("click","button",function(){
+$(".jbR-foot-cancel").on("click","button",function(e){
+	e.preventDefault();
 	$("#jiaoban div.active").removeClass("active");
 	$("#jiaobanMain").addClass("active");
 });
