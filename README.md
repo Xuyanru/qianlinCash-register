@@ -1,2 +1,2 @@
 # qianlinCash-register
-钱林自收银机系统
+钱林收银机系统
